@@ -1,0 +1,13 @@
+
+ box0queen1box1queen2box2queen3
+ box0queen1box1queen2box3queen3a
+ box0queen1box1queen2box4queen3
+ box0queen1box2queen2box3queen3
+ box0queen1box2queen2box4queen3
+ box0queen1box3queen2box4queen3
+ box1queen1box2queen2box3queen3
+ box1queen1box2queen2box4queen3
+ box1queen1box3queen2box4queen3
+ box2queen1box3queen2box4queen3
+
+
