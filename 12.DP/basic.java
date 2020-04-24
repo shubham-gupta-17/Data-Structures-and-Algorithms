@@ -2,6 +2,19 @@ public class basic{
 
 	
 //==================================================================
+	public static void solve()
+	{
+		fib_solve();
+		
+		//maze_path();
+
+		dice();
+	}
+
+	public static void main(String[] args)
+	{
+		solve();
+	}
 
 	public static int fib_rec(int n,int[] dp)// memoisation
 	{	//if(n<0) return 0;
@@ -35,10 +48,10 @@ public class basic{
 		int a1=a[0][0]*b[0][1] + a[0][1]*b[1][1];
 		int a2=a[1][0]*b[0][0] +a[1][1]*b[1][0];
 		int a3=a[1][0]*b[0][1] +a[1][1]*b[1][1];
-		a[0][0]=a0;
-		a[0][1]=a1;
-		a[1][0]=a2;
-		a[1][1]=a3;
+		ans[0][0]=a0;
+		ans[0][1]=a1;
+		ans[1][0]=a2;
+		ans[1][1]=a3;
 
 		return ans;
 	}
@@ -50,7 +63,7 @@ public class basic{
 		int [][] rec_ans=fiblogn(a,n/2);
 		rec_ans=fib3_multiply(rec_ans,rec_ans);
 
-		return n%2==0?fib3_multiply(rec_ans,a):rec_ans;
+		return n%2!=0?fib3_multiply(rec_ans,a):rec_ans;
 	}
 	public static void fib_solve()
 	{	
@@ -148,8 +161,9 @@ public class basic{
 		if(dp[sr][sc]!=0 )  return dp[sr][sc];
 		int count=0;
 		
-		for(int i=0;i<3;i++)
-		{for(int jump=1;jump<=er+1;jump++){
+		
+		for(int jump=1;jump<=er+1;jump++)
+		{	for(int i=0;i<3;i++){
 			int r=sr+jump*dir[i][0];
 			int c=sc+jump*dir[i][1];
 			if(r<=er && c<=ec){
@@ -178,19 +192,86 @@ public class basic{
 		display2D(dp1);
 
 	}
-	public static void solve()
-	{
-		fib_solve();
-		
-		maze_path();
-		
-		
+	
 
+	public static int dice_memo(int start,int end,int[] arr,int n,int[] dp)
+{		if(start>end)
+		return 0;
+
+		if(start==end){
+			return dp[start]=1;
+		}
+
+		if(dp[start]!=0)  return dp[start]; 
+		int count=0;
+		for(int i=0;i<n;i++)
+		{	if(start+i<=end)
+			count+=dice_memo(start+arr[i],end,arr,n,dp);
+		}
+
+		if(dp[start]==0) dp[start]=count;
+		return count;
+
+}
+
+	public static int dice_tab(int start,int end,int[] arr,int[] dp)
+	{
+		for(int i=end;i>=start;i--)
+		{
+			if(i==end)
+			{
+				dp[i]=1;
+				continue;
+			}
+
+			int count=0;
+			for(int j=0;j<6;j++){
+				if(i+arr[j]<=end)
+				count+=dp[i+arr[j]];
+			}
+
+			dp[i]=count;
+			
+		}
+		return dp[0];
 	}
 
-	public static void main(String[] args)
+	public static int dice_tab_step(int start,int end,int[] steps,int[] dp)
 	{
-		solve();
+		for(int i=end;i>=start;i--)
+		{
+			if(i==end)
+			{
+				dp[i]=1;
+				continue;
+			}
+
+			int count=0;
+			for(int j=0;j<steps.length;j++)
+			{
+				if(i+steps[j]<=end)
+					count+=dp[i-steps[j]];
+
+			}
+
+			dp[i]=count;
+		}
+
+		dp[0];
+	}
+	public static void dice()
+	{	int start=0;
+		int end=10;
+		int[] arr={1,2,3,4,5,6};
+		int [] steps={3,5,7};
+		int[] dp=new int[end+1];
+
+		// for(int i=10;i>=0;i--)
+		// System.out.println(dice_memo(i,end,arr,6,dp));
+		//System.out.println(dice(start,end,ar,3,dp));
+		
+		System.out.println(dice_tab(start,end,arr,dp));
+		System.out.println(dice_tab_step(start,end,steps,dp));
 	}
 
 

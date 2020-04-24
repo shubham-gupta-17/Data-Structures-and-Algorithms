@@ -74,7 +74,8 @@ void queen_permutation(vector<int> &boxes,int start_box,int current_queen,int to
 
 }
 
-vector<vector<int>> dir={{-1,0},{0,-1},{-1,1},{-1,-1},{1,0},{0,1},{1,-1},{1,1}};
+// vector<vector<int>> dir={{-1,0},{0,-1},{-1,1},{-1,-1},{1,0},{0,1},{1,-1},{1,1}};
+vector<vector<int>> dir={{0,-1},{-1,0},{-1,-1},{-1,1}};
 bool is_safe(vector<vector<int>>&boxes,int r,int c)
 {  
     for (int d = 0; d < dir.size(); d++)
