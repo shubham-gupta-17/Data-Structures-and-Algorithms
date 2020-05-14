@@ -1,0 +1,21 @@
+a apple
+b batman
+a angry
+c cat
+d doggy
+d duck
+
+b batman
+a angry
+c cat
+d doggy
+d duck
+e elephant
+
+b batman
+a angry
+d doggy
+d duck
+e elephant
+
+-1

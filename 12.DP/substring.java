@@ -46,6 +46,7 @@ public class substring{
 		return dp;
 	}
 
+	
 	public static int longestPalindrom_substring_memo(String s,int i,int j,int[][] dp)
 	{
 		if(i>j)
