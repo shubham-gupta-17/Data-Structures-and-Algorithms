@@ -28,7 +28,7 @@ public class REC_new{
 			return myans;
 		}
 
-		public static int subseq_void_type(String s,String ans)
+		public static int subseq_void_type(String s,String ans) // it will give all the subsequence at base case
 		{
 			if(s.length()==0)
 			{
@@ -39,6 +39,28 @@ public class REC_new{
 			count+=subseq_void_type(s.substring(1),ans);
 			count+=subseq_void_type(s.substring(1),ans+s.charAt(0));
 			return count;
+		}
+
+		public static int subsequences_level(String s,String ans)
+		{
+			if(s.length()==0)
+			{
+				return 0;
+			}
+			int count=0;
+			int vis=0;
+			for(int i=0;i<s.length();i++)
+			{
+				int mask=(1<<(s.charAt(i)-'A'));
+				if(vis&mask==0)
+				{
+					vis^=mask;
+					String nstr=s.substring(0,i)+s.substring(i+1);
+					count+=subsequences_level(nstr,ans+s.charAt(i))+1;
+				}
+			}
+			return count;
+
 		}
 
 		public static ArrayList<String> permutation_withduplicates(String s)
@@ -117,7 +139,7 @@ public class REC_new{
 
 		System.out.println(permutation_withoutduplicates("aba"," "));
 
-
+		System.out.println(subsequences_level("aba",""));
 
 
 

@@ -415,6 +415,31 @@ vector<int>  leet_inorder(Node *root,vector<int>level)
 
     return level ;
 }
+//leaf to leaf path geeks
+int ans;
+int path(Node*root)
+{
+    if(root==NULL) return 0;
+    if(root->left==NULL && root->right==NULL){ 
+        return root->data;
+    }
+    int left=path(root->left);
+    int right=path(root->right);
+    int comp=0;
+    if(root->left!=NULL && root->right!=NULL)
+    {
+        comp=max(left,right)+root->data;
+        ans=max(ans,left+right+root->data);
+        return comp;
+    }
+    return (root->left==NULL ? right:left)+root->data;
+}
+int maxPathSum(Node *root) {
+    if(root==NULL) return 0;
+    ans=INT_MIN;
+    path(root);
+    return ans;
+}
 int main()
 {
   int n;
@@ -503,6 +528,8 @@ leveloder2(root);
   */
 
  kdown(root,60,2);
+ //leaf to leaf 
+ maxPathSum(root);
     return 0;
 
 
