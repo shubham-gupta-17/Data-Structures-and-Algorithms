@@ -1,24 +1,24 @@
 import java.util.LinkedList;
 public class basic{
 
-	public static void main(final String[] args) {
+	public static void main( String[] args) {
         solve();
     }
 
     public static void fibonacci() {
-        final int n = 10; // nth term in fibonacci
+         int n = 10; // nth term in fibonacci
         System.out.println(fib_01(n)); // simple recursion
         System.out.println(fib_02(n)); // simple for loop (most accurate and fast always prefer this)
-        final int[] dp = new int[n + 1];
+         int[] dp = new int[n + 1];
         System.out.println(fib_03(n, dp)); // using memoization
 
-        final int[][] a = { { 1, 1 }, { 1, 0 } };
-        final int[][] ans = fib_04(n, a); // matrix multiplication
+         int[][] a = { { 1, 1 }, { 1, 0 } };
+         int[][] ans = fib_04(n, a); // matrix multiplication
         System.out.println(ans[0][1]);
         display_2D(ans);
     }
 
-    public static int fib_01(final int n) {
+    public static int fib_01( int n) {
         if (n == 0)
             return 0;
         if (n == 1 || n == 2)
@@ -26,7 +26,7 @@ public class basic{
         return fib_01(n - 1) + fib_01(n - 2);
     }
 
-    public static int fib_02(final int n) {
+    public static int fib_02( int n) {
         int a = 1;
         int b = 1;
         int c = b + a;
@@ -37,7 +37,7 @@ public class basic{
         }
 
         // dp using tabulation
-        final int[] dp = new int[n + 1];
+         int[] dp = new int[n + 1];
         dp[0] = 0;
         dp[1] = dp[2] = 1;
         for (int i = 3; i <= n; i++)
@@ -46,7 +46,7 @@ public class basic{
         return dp[n];
     }
 
-    public static int fib_03(final int n, final int[] dp) {
+    public static int fib_03( int n,  int[] dp) {
         if (n == 0)
             return dp[0] = 0;
         if (n == 1 || n == 2)
@@ -56,9 +56,9 @@ public class basic{
         return dp[n] = fib_03(n - 1, dp) + fib_03(n - 2, dp);
     }
 
-    public static void display_2D(final int[][] a) {
-        final int n = a.length;
-        final int m = a[0].length;
+    public static void display_2D( int[][] a) {
+         int n = a.length;
+         int m = a[0].length;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < m; j++)
                 System.out.print(a[i][j] + " ");
@@ -67,12 +67,12 @@ public class basic{
         }
     }
 
-    public static int[][] multiply(final int[][] a, final int[][] b) {
-        final int a0 = a[0][0] * b[0][0] + a[0][1] * b[1][0];
-        final int a1 = a[0][0] * b[0][1] + a[0][1] * b[1][1];
-        final int a2 = a[1][0] * b[0][0] + a[1][1] * b[1][0];
-        final int a3 = a[1][0] * b[0][1] + a[1][1] * b[1][1];
-        final int[][] ans = new int[2][2];
+    public static int[][] multiply( int[][] a,  int[][] b) {
+         int a0 = a[0][0] * b[0][0] + a[0][1] * b[1][0];
+         int a1 = a[0][0] * b[0][1] + a[0][1] * b[1][1];
+         int a2 = a[1][0] * b[0][0] + a[1][1] * b[1][0];
+         int a3 = a[1][0] * b[0][1] + a[1][1] * b[1][1];
+         int[][] ans = new int[2][2];
         ans[0][0] = a0;
         ans[0][1] = a1;
         ans[1][0] = a2;
@@ -80,11 +80,11 @@ public class basic{
         return ans;
     }
 
-    public static int[][] fib_04(final int n, final int[][] a) {
+    public static int[][] fib_04( int n,  int[][] a) {
         if (n == 1)
             return a;
-        final int[][] left = fib_04(n / 2, a);
-        final int[][] ans = multiply(left, left);
+         int[][] left = fib_04(n / 2, a);
+         int[][] ans = multiply(left, left);
         if (n % 2 == 0)
             return ans;
 
@@ -95,14 +95,14 @@ public class basic{
 
     public static void mazepath() {
         // call in three directions
-        final int[][] dir = { { 0, 1 }, { 1, 0 }, { 1, 1 } };
-        final int[][] dp = new int[4][4];
+         int[][] dir = { { 0, 1 }, { 1, 0 }, { 1, 1 } };
+         int[][] dp = new int[4][4];
         System.out.println("mazepath: ");
         System.out.println(path_01(0, 0, 4, 4, dp)); // simple recursion using memoisation
         System.out.println(path_02(4, 4)); // using dp
 
         // unique path
-        final int[][] grid = { { 1, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 2, -1 } };
+         int[][] grid = { { 1, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 2, -1 } };
         System.out.println(uniquePathsIII(grid));
 
         // board path multi move i.e including jumps
@@ -112,7 +112,7 @@ public class basic{
 
     }
 
-    public static int path_01(final int sr, final int sc, final int er, final int ec, final int[][] dp) {
+    public static int path_01( int sr,  int sc,  int er,  int ec,  int[][] dp) {
         if (sr == er - 1 && sc == ec - 1)
             return dp[sr][sc] = 1;
 
@@ -130,8 +130,8 @@ public class basic{
 
     }
 
-    public static int path_02(final int er, final int ec) {
-        final int[][] dp = new int[er][ec];
+    public static int path_02( int er,  int ec) {
+         int[][] dp = new int[er][ec];
         for (int i = er - 1; i >= 0; i--) {
             for (int j = ec - 1; j >= 0; j--) {
                 if (i == er - 1 && j == ec - 1) {
@@ -159,21 +159,21 @@ public class basic{
     // unique path 3:leetcode 980
     static int[][] dir = { { 0, 1 }, { 1, 0 }, { 0, -1 }, { -1, 0 } };
 
-    public static int find_path(final int[][] grid, final int sr, final int sc, final int er, final int ec,
-            final int count) {
+    public static int find_path( int[][] grid,  int sr,  int sc,  int er,  int ec,
+             int count) {
         if (sr == er && sc == ec && grid[sr][sc] == 2) {
             return count == 1 ? 1 : 0;
         }
         int ans = 0;
         if (grid[sr][sc] == -1)
             return 0;
-        final int no = grid[sr][sc];
+         int no = grid[sr][sc];
         grid[sr][sc] = -1;
         for (int i = 0; i < 4; i++) {
-            final int r = sr + dir[i][0];
-            final int c = sc + dir[i][1];
-            final int n = grid.length;
-            final int m = grid[0].length;
+             int r = sr + dir[i][0];
+             int c = sc + dir[i][1];
+             int n = grid.length;
+             int m = grid[0].length;
             if (r >= 0 && c >= 0 && r < n && c < m && grid[r][c] != -1) {
                 ans += find_path(grid, r, c, er, ec, count - 1);
             }
@@ -182,9 +182,9 @@ public class basic{
         return ans;
     }
 
-    public static int uniquePathsIII(final int[][] grid) {
-        final int n = grid.length;
-        final int m = grid[0].length;
+    public static int uniquePathsIII( int[][] grid) {
+         int n = grid.length;
+         int m = grid[0].length;
 
         int count = 0;
         int sr = 0, sc = 0, er = 0, ec = 0;
@@ -207,7 +207,7 @@ public class basic{
     }
 
     // path using jumps
-    public static int path_jump(final int sr, final int sc, final int er, final int ec) {
+    public static int path_jump( int sr,  int sc,  int er,  int ec) {
         if (sr == er - 1 && sc == ec - 1) {
             return 1;
         }
@@ -228,8 +228,8 @@ public class basic{
 
     }
 
-    public static int path_jump_dp(final int sr, final int sc, final int er, final int ec) {
-        final int[][] dp = new int[er][ec];
+    public static int path_jump_dp( int sr,  int sc,  int er,  int ec) {
+         int[][] dp = new int[er][ec];
         for (int i = er - 1; i >= 0; i--) {
             for (int j = ec - 1; j >= 0; j--) {
                 if (i == er - 1 && j == ec - 1) {
@@ -258,9 +258,9 @@ public class basic{
     // =================================================================================================================
 
     public static void dice() {
-        final int target = 10;
-        final int[] dices = { 1, 2, 3, 4, 5, 6 };
-        final int[] dp = new int[target + 1];
+         int target = 10;
+         int[] dices = { 1, 2, 3, 4, 5, 6 };
+         int[] dp = new int[target + 1];
         System.out.println(find_ways_permutation(target, dices, dp));// using recursion find no of ways in which we can
                                                                      // reach target (permutation)
         // System.out.println(find_ways_combinations(target,dices));
@@ -275,14 +275,14 @@ public class basic{
         System.out.println(numRollsToTarget(10, 30, 200));
     }
 
-    public static void display_1D(final int[] dp) {
+    public static void display_1D( int[] dp) {
         System.out.println();
         for (int i = 0; i < dp.length; i++) {
             System.out.print(dp[i] + ", ");
         }
     }
 
-    public static int find_ways_permutation(final int target, final int[] dices, final int[] dp) {
+    public static int find_ways_permutation( int target,  int[] dices,  int[] dp) {
         if (target == 0)
             return dp[target] = 1;
         int count = 0;
@@ -295,9 +295,9 @@ public class basic{
         return dp[target] = count;
     }
 
-    public static int find_ways_dp(final int target, final int[] dices) {
+    public static int find_ways_dp( int target,  int[] dices) {
         // bottom up dp
-        final int[] dp = new int[target + 1];
+         int[] dp = new int[target + 1];
         // dp[target]=1;
         // for(int i=target-1;i>=0;i--)
         // {
@@ -311,7 +311,7 @@ public class basic{
         // top down dp
         dp[0] = 1;
         for (int i = 1; i <= target; i++) {
-            for (final int coins : dices) {
+            for ( int coins : dices) {
                 if (i - coins >= 0)
                     dp[i] += dp[i - coins];
             }
@@ -321,14 +321,14 @@ public class basic{
 
     // this method is only possible because the inputs the continous and only upto
     // six
-    public static int find_ways_optimization(final int target, final int[] dices) {
-        final LinkedList<Integer> link = new LinkedList<>();
+    public static int find_ways_optimization( int target,  int[] dices) {
+         LinkedList<Integer> link = new LinkedList<>();
 
         for (int i = 0; i <= target; i++) {
             if (i < 2)
                 link.addFirst(1);
             if (i > 6) {
-                final int lastvalue = link.removeLast();
+                 int lastvalue = link.removeLast();
                 link.addFirst(2 * link.getFirst() - lastvalue);
             }
 
@@ -345,7 +345,7 @@ public class basic{
 
     // in java use double instead of long as we can not directly int to long but can
     // do that with double
-    public static double find_numRollsToTarget(final int dice, final int no, final int target, final double[][] dp) {
+    public static double find_numRollsToTarget( int dice,  int no,  int target,  double[][] dp) {
         if (target == 0) {
             int i = 1;
             if (dice == 0)
@@ -370,14 +370,14 @@ public class basic{
         return dp[target][dice] = count;
     }
 
-    public static int numRollsToTarget(final int d, final int f, final int target) {
+    public static int numRollsToTarget( int d,  int f,  int target) {
         if (d == 0)
             return 0;
         if (d == 1 && target > f)
             return 0;
         if (d == 1 && target <= f)
             return 1;
-        final double[][] dp = new double[target + 1][d + 1];
+         double[][] dp = new double[target + 1][d + 1];
         find_numRollsToTarget(d, f, target, dp);
 
         return (int) (dp[target][d] % mod); // typecasting from double to int
@@ -388,17 +388,17 @@ public class basic{
 
     public static void climb_stairs() {
         // leetcode 70,746
-        final int[] cost = { 1, 100, 1, 1, 100, 11, 1, 1, 100, 1 };
+         int[] cost = { 1, 100, 1, 1, 100, 11, 1, 1, 100, 1 };
         System.out.println(minCostClimbingStairs_fast(cost));
         System.out.println(minCostClimbingStairs_dp(cost));
 
     }
 
-    public static int minCostClimbingStairs_fast(final int[] cost) {
+    public static int minCostClimbingStairs_fast( int[] cost) {
         int a = cost[0];
         int b = cost[1];
         int c = 0;
-        final int n = cost.length;
+         int n = cost.length;
         for (int i = 2; i < n; i++) {
             c = cost[i] + Math.min(a, b);
             a = b;
@@ -407,15 +407,15 @@ public class basic{
         return Math.min(a, b);
     }
 
-    public static int minCostClimbingStairs_dp(final int[] cost) {
-        final int n = cost.length;
+    public static int minCostClimbingStairs_dp( int[] cost) {
+         int n = cost.length;
         if (n == 0)
             return 0;
         if (n == 1)
             return cost[0];
         if (n == 2)
             return Math.min(cost[0], cost[1]);
-        final int[] dp = new int[n];
+         int[] dp = new int[n];
         dp[0] = cost[0];
         dp[1] = cost[1];
         for (int i = 2; i < n; i++) {
@@ -426,8 +426,8 @@ public class basic{
     }
 
     // =================================================================================================================
-    public static int min_pathsum(final int s, final int e, final int n, final int m, final int[][] grid,
-            final int[][] dp) // leetcode 64
+    public static int min_pathsum( int s,  int e,  int n,  int m,  int[][] grid,
+             int[][] dp) // leetcode 64
     {
         if (s == n && e == m) {
             return dp[s][e] = grid[s][e];
@@ -445,18 +445,18 @@ public class basic{
 
     }
 
-    public static int minPathSum(final int[][] grid) {
-        final int n = grid.length;
-        final int m = grid[0].length;
-        final int[][] dp = new int[n][m];
+    public static int minPathSum( int[][] grid) {
+         int n = grid.length;
+         int m = grid[0].length;
+         int[][] dp = new int[n][m];
         min_pathsum(0, 0, n - 1, m - 1, grid, dp);
         return dp[0][0];
     }
 
-    public static int minPathSum_dp(final int[][] grid) {
-        final int n = grid.length;
-        final int m = grid[0].length;
-        final int[][] dp = new int[n][m];
+    public static int minPathSum_dp( int[][] grid) {
+         int n = grid.length;
+         int m = grid[0].length;
+         int[][] dp = new int[n][m];
 
         for (int i = n - 1; i >= 0; i--) {
             for (int j = m - 1; j >= 0; j--) {
@@ -478,16 +478,16 @@ public class basic{
     }
 
     public static void mincostpath() {
-        final int[][] grid = { { 1, 3, 1 }, { 1, 5, 1 }, { 4, 2, 1 } };
+         int[][] grid = { { 1, 3, 1 }, { 1, 5, 1 }, { 4, 2, 1 } };
         minPathSum(grid);
         System.out.println(minPathSum_dp(grid));
     }
 
     // ===================================================================================================================================4
-    public static int goldmine_dp(final int[][] grid) {
-        final int n = grid.length;
-        final int m = grid[0].length;
-        final int[][] dp = new int[n][m];
+    public static int goldmine_dp( int[][] grid) {
+         int n = grid.length;
+         int m = grid[0].length;
+         int[][] dp = new int[n][m];
 
         for (int j = m - 1; j >= 0; j--) {
             for (int i = 0; i < n; i++) {
@@ -513,8 +513,8 @@ public class basic{
 
     }
 
-    public static int goldmine_rec(final int[][] grid, final int[][] dp, final int sr, final int sc, final int n,
-            final int m) {
+    public static int goldmine_rec( int[][] grid,  int[][] dp,  int sr,  int sc,  int n,
+             int m) {
         if (sc == m) {
             return dp[sr][sc] = grid[sr][sc];
         }
@@ -532,12 +532,12 @@ public class basic{
     }
 
     public static void goldmine() {
-        final int[][] grid = { { 77, 15, 93, 35 }, { 86, 92, 49, 21 }, { 62, 27, 90, 59 }, { 63, 26, 40, 26 },
+         int[][] grid = { { 77, 15, 93, 35 }, { 86, 92, 49, 21 }, { 62, 27, 90, 59 }, { 63, 26, 40, 26 },
                 { 72, 36, 11, 68 }, { 67, 29, 82, 30 }, { 62, 23, 67, 35 } };
         System.out.println(goldmine_dp(grid));
-        final int n = 7;
-        final int m = 4;
-        final int[][] dp = new int[n][m];
+         int n = 7;
+         int m = 4;
+         int[][] dp = new int[n][m];
         int ans = Integer.MIN_VALUE;
         for (int i = 0; i < n; i++) {
             goldmine_rec(grid, dp, i, 0, n - 1, m - 1);
@@ -549,7 +549,7 @@ public class basic{
 
     // ==========================================================================================================================================================
 
-    public static int pair_peope_rec(final int n) {
+    public static int pair_peope_rec( int n) {
         if (n == 1 || n == 2)
             return n;
 
@@ -559,7 +559,7 @@ public class basic{
         return pair_peope_rec(n - 1) + (n - 1) * pair_peope_rec(n - 2);
     }
 
-    public static int pair_peope_dp_memo(final int n, final int[] dp) {
+    public static int pair_peope_dp_memo( int n,  int[] dp) {
 
         if (n <= 1)
             return dp[n] = 1;
@@ -568,8 +568,8 @@ public class basic{
         return dp[n] = pair_peope_dp_memo(n - 1, dp) + (n - 1) * pair_peope_dp_memo(n - 2, dp);
     }
 
-    public static int pair_peope_dp(final int n) {
-        final int[] dp = new int[n + 1];
+    public static int pair_peope_dp( int n) {
+         int[] dp = new int[n + 1];
 
         for (int i = 0; i <= n; i++) {
             if (i <= 1) {
@@ -581,7 +581,7 @@ public class basic{
         return dp[n];
     }
 
-    public static int pair_people_fast(final int n) {
+    public static int pair_people_fast( int n) {
         int a = 1;
         int b = 2;
         int c = 0;
@@ -595,16 +595,16 @@ public class basic{
     }
 
     public static void pair_and_single() {
-        final int n = 10;
+         int n = 10;
         System.out.println(pair_peope_rec(n));
-        final int[] dp = new int[n + 1];
+         int[] dp = new int[n + 1];
         System.out.println(pair_peope_dp_memo(n, dp));
         System.out.println(pair_peope_dp(n));
         System.out.println(pair_people_fast(n));
 
     }
 
-    public static int divide_memo(final int n, final int k, final int[][] dp) {
+    public static int divide_memo( int n,  int k,  int[][] dp) {
         if (k < 0)
             return 0;
         if (k == 1 || (n == k))
@@ -614,8 +614,8 @@ public class basic{
         return dp[n][k] = divide_memo(n - 1, k - 1, dp) + divide_memo(n - 1, k, dp) * k;
     }
 
-    public static int divide_dp(final int n, final int k) {
-        final int[][] dp = new int[n + 1][k + 1];
+    public static int divide_dp( int n,  int k) {
+         int[][] dp = new int[n + 1][k + 1];
         for (int i = 1; i <= n; i++) {
             for (int j = 1; j <= k; j++) {
                 if (j > i)
@@ -636,9 +636,9 @@ public class basic{
     }
 
     public static void divide_in_kgroups() {
-        final int n = 8;
-        final int k = 3;
-        final int[][] dp = new int[n + 1][k + 1];
+         int n = 8;
+         int k = 3;
+         int[][] dp = new int[n + 1][k + 1];
         System.out.println(divide_memo(n, k, dp));
         System.out.println(divide_dp(n, k));
         // display_2D(dp);
@@ -646,12 +646,12 @@ public class basic{
 
     // ==========================================================================================================================================
 
-    public static int jump_game_rec(final int[] nums, final int start, final int n, final int ans) {
+    public static int jump_game_rec( int[] nums,  int start,  int n,  int ans) {
         if (start == n) {
             return ans;
         }
         int ans1 = Integer.MAX_VALUE;
-        final int no = nums[start];
+         int no = nums[start];
         for (int i = 1; i <= no; i++) {
             if (start + i <= n)
                 ans1 = Math.min(ans1, jump_game_rec(nums, start + i, n, ans + 1));
@@ -660,9 +660,9 @@ public class basic{
         return ans1;
     }
 
-    public static int jump_game_dp(final int[] nums) {
-        final int n = nums.length;
-        final int[] dp = new int[n];
+    public static int jump_game_dp( int[] nums) {
+         int n = nums.length;
+         int[] dp = new int[n];
         for (int i = 0; i < n; i++) {
             if (i == 0) {
                 dp[0] = 0;
@@ -677,8 +677,8 @@ public class basic{
         return dp[n - 1];
     }
 
-    public static Boolean jump_game_simple(final int[] nums) {
-        final int n = nums.length;
+    public static Boolean jump_game_simple( int[] nums) {
+         int n = nums.length;
         int last = n - 1;
         for (int i = n - 2; i >= 0; i--) {
             if (i + nums[i] >= last)
@@ -687,9 +687,9 @@ public class basic{
         return last == 0;
     }
 
-    public static int jump_game_optimise(final int[] nums) {
-        final int n = nums.length;
-        final int[] dp = new int[n];
+    public static int jump_game_optimise( int[] nums) {
+         int n = nums.length;
+         int[] dp = new int[n];
         dp[n - 1] = 0;
         for (int i = n - 2; i >= 0; i--) {
             dp[i] = (int) 1e7;
@@ -702,9 +702,9 @@ public class basic{
 
     }
 
-    public static int jump_game_fast(final int[] nums) {
+    public static int jump_game_fast( int[] nums) {
 
-        final int n = nums.length;
+         int n = nums.length;
         if (n == 0)
             return 0;
         if (n == 1 || nums[0] == 0)
@@ -727,7 +727,7 @@ public class basic{
     }
 
     public static void jump_game() {
-        final int[] nums = { 2, 3, 1, 1, 4, 3, 4, 5, 6, 7, 8, 9, 10 };
+         int[] nums = { 2, 3, 1, 1, 4, 3, 4, 5, 6, 7, 8, 9, 10 };
         System.out.println("O(n) ans: " + jump_game_simple(nums)); // O(n) time and O(1) space
         System.out.println("ans from rec: " + jump_game_rec(nums, 0, nums.length - 1, 0));// O(n^2);
         System.out.println("ans from dp: " + jump_game_dp(nums));
@@ -738,7 +738,7 @@ public class basic{
 
     // =====================================================================================================================================
 
-    public static int tri_path_rec(final int[][] nums, final int[][] dp, final int row, final int column) {
+    public static int tri_path_rec( int[][] nums,  int[][] dp,  int row,  int column) {
         if (row == nums.length - 1)
             return dp[row][column] = nums[row][column];
         if (dp[row][column] != 0)
@@ -750,10 +750,10 @@ public class basic{
         return dp[row][column] = Math.min(left, right) + nums[row][column];
     }
 
-    public static int tri_path_dp(final int[][] triangle) {
-        final int n = triangle.length;
-        final int m = triangle[n - 1].length;
-        final int[][] dp = new int[n][m];
+    public static int tri_path_dp( int[][] triangle) {
+         int n = triangle.length;
+         int m = triangle[n - 1].length;
+         int[][] dp = new int[n][m];
         for (int i = n - 1; i >= 0; i--) {
             for (int j = triangle[i].length - 1; j >= 0; j--) {
                 if (i == n - 1) {
@@ -773,19 +773,19 @@ public class basic{
     }
 
     public static void triangle_path() {
-        final int[][] nums = { { 2 }, { 3, 4 }, { 6, 5, 7 }, { 4, 1, 8, 3 } };
-        final int n = nums.length;
-        final int m = nums[n - 1].length;
-        final int[][] dp = new int[n][m];
+         int[][] nums = { { 2 }, { 3, 4 }, { 6, 5, 7 }, { 4, 1, 8, 3 } };
+         int n = nums.length;
+         int m = nums[n - 1].length;
+         int[][] dp = new int[n][m];
         System.out.println(tri_path_rec(nums, dp, 0, 0));
         System.out.println(tri_path_dp(nums));
 
     }
 
     // ===================================================================================================================================
-    public static int[][] ispalindromesubstring_dp(final String s) {
-        final int n = s.length();
-        final int[][] dp = new int[n][n];
+    public static int[][] ispalindromesubstring_dp( String s) {
+         int n = s.length();
+         int[][] dp = new int[n][n];
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i; j < n; j++) {
                 if (i == j) {
@@ -806,11 +806,11 @@ public class basic{
         return dp;
     }
 
-    public static int countofpalindromesubstring_dp(final String s) {
-        final int n = s.length();
+    public static int countofpalindromesubstring_dp( String s) {
+         int n = s.length();
         if (n == 1 || n == 0)
             return n;
-        final boolean[][] dp = new boolean[n][n];
+         boolean[][] dp = new boolean[n][n];
         int count = 0;
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i; j < n; j++) {
@@ -831,7 +831,7 @@ public class basic{
 
     static int ans = 0;
 
-    public static int countofpalindromesubstring_rec(final String s, final int i, final int j, final int[][] dp) {
+    public static int countofpalindromesubstring_rec( String s,  int i,  int j,  int[][] dp) {
         if (i > j)
             return 0;
         if (dp[i][j] != -1)
@@ -855,10 +855,10 @@ public class basic{
 
     }
 
-    public static String longestpalindromesubstring_dp(final String s) {
-        final int n = s.length();
-        final int[][] dp = new int[n][n];
-        final int[] idx = new int[2];
+    public static String longestpalindromesubstring_dp( String s) {
+         int n = s.length();
+         int[][] dp = new int[n][n];
+         int[] idx = new int[2];
         int len = Integer.MIN_VALUE;
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i; j < n; j++) {
@@ -883,8 +883,8 @@ public class basic{
 
     static int len = Integer.MIN_VALUE;
 
-    public static int longestpalindromesubstring_rec(final String s, final int[] idx, final int i, final int j,
-            final int[][] dp) // it will give tle
+    public static int longestpalindromesubstring_rec( String s,  int[] idx,  int i,  int j,
+             int[][] dp) // it will give tle
     {
         if (i > j)
             return 0;
@@ -910,9 +910,9 @@ public class basic{
 
     }
 
-    public static String longestpalindromesubsequence_dp(final String s) {
-        final int n = s.length();
-        final int[][] dp = new int[n][n];
+    public static String longestpalindromesubsequence_dp( String s) {
+         int n = s.length();
+         int[][] dp = new int[n][n];
         int st = 0;
         int e = 0;
         int len = 0;
@@ -941,8 +941,8 @@ public class basic{
 
     static int len1 = 0;
 
-    public static int longestpalindromesubsequence_rec(final String s, final int start, final int end, final int[][] dp,
-            final int[] idx) {
+    public static int longestpalindromesubsequence_rec( String s,  int start,  int end,  int[][] dp,
+             int[] idx) {
 
         if (start > end)
             return 0;
@@ -951,10 +951,10 @@ public class basic{
         if (start == end)
             return dp[start][end] = 1;
 
-        final int mid = longestpalindromesubsequence_rec(s, start + 1, end - 1, dp, idx);
+         int mid = longestpalindromesubsequence_rec(s, start + 1, end - 1, dp, idx);
 
-        final int left = longestpalindromesubsequence_rec(s, start, end - 1, dp, idx);
-        final int right = longestpalindromesubsequence_rec(s, start + 1, end, dp, idx);
+         int left = longestpalindromesubsequence_rec(s, start, end - 1, dp, idx);
+         int right = longestpalindromesubsequence_rec(s, start + 1, end, dp, idx);
 
         dp[start][end] = (s.charAt(start) == s.charAt(end)) ? mid + 2 : Math.max(left, right);
         if (len1 < dp[start][end]) {
@@ -967,22 +967,22 @@ public class basic{
 
     }
 
-    public static int longestPalindromeSubsequence(final String s, final int start, final int end, final int[][] dp) {
+    public static int longestPalindromeSubsequence( String s,  int start,  int end,  int[][] dp) {
         if (start > end)
             return 0;
         if (dp[start][end] != 0)
             return dp[start][end];
         if (start == end)
             return dp[start][end] = 1;
-        final int mid = longestPalindromeSubsequence(s, start + 1, end - 1, dp);
-        final int left = longestPalindromeSubsequence(s, start, end - 1, dp);
-        final int right = longestPalindromeSubsequence(s, start + 1, end, dp);
+         int mid = longestPalindromeSubsequence(s, start + 1, end - 1, dp);
+         int left = longestPalindromeSubsequence(s, start, end - 1, dp);
+         int right = longestPalindromeSubsequence(s, start + 1, end, dp);
         return dp[start][end] = (s.charAt(start) == s.charAt(end)) ? mid + 2 : Math.max(left, right);
     }
 
-    public static int countofpalindromesubsequence_dp(final String s) {
-        final int n = s.length();
-        final int[][] dp = new int[n][n];
+    public static int countofpalindromesubsequence_dp( String s) {
+         int n = s.length();
+         int[][] dp = new int[n][n];
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i; j < n; j++) {
                 if (i == j)
@@ -996,23 +996,24 @@ public class basic{
         return dp[0][n - 1];
     }
 
-    public static int countofpalindromesubsequence_rec(final String s, final int start, final int end,
-            final int[][] dp) {
+    public static int countofpalindromesubsequence_rec( String s,  int start,  int end,
+             int[][] dp) {
         if (start > end)
             return 0;
         if (dp[start][end] != 0)
             return dp[start][end];
         if (start == end)
             return dp[start][end] = 1;
-        final int mid = countofpalindromesubsequence_rec(s, start + 1, end - 1, dp);
-        final int left = countofpalindromesubsequence_rec(s, start, end - 1, dp);
-        final int right = countofpalindromesubsequence_rec(s, start + 1, end, dp);
+         int mid = countofpalindromesubsequence_rec(s, start + 1, end - 1, dp);
+         int left = countofpalindromesubsequence_rec(s, start, end - 1, dp);
+         int right = countofpalindromesubsequence_rec(s, start + 1, end, dp);
         return dp[start][end] = (s.charAt(start) == s.charAt(end)) ? left + right + 1 : left + right - mid;
     }
 
-    public static int count_Unique_PalindromicSubsequences(final String s) {
-        final int n = s.length();
-        final long[][] dp = new long[n][n];
+    public static int count_Unique_PalindromicSubsequences( String s) {
+        long mod1=(int)1e9+7;
+         int n = s.length();
+         long[][] dp = new long[n][n];
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i; j < n; j++) {
                 if (i == j) {
@@ -1025,10 +1026,10 @@ public class basic{
                         left++;
                     while (left <= right && s.charAt(i) != s.charAt(right))
                         right--;
-                    final long add = (left < right) ? -dp[left + 1][right - 1] : (left == right) ? 1 : 2;
-                    dp[i][j] = (2 * dp[i + 1][j - 1] + add) % mod;
+                     long add = (left < right) ? -dp[left + 1][right - 1] : (left == right) ? 1 : 2;
+                    dp[i][j] = (2 * dp[i + 1][j - 1] + add)%mod1;
                 } else
-                    dp[i][j] = (dp[i + 1][j] + dp[i][j - 1] - dp[i + 1][j - 1]) % mod;
+                    dp[i][j] = (dp[i + 1][j] + dp[i][j - 1] - dp[i + 1][j - 1])%mod1;
 
                 if (dp[i][j] < 0)
                     dp[i][j] += mod;
@@ -1037,11 +1038,11 @@ public class basic{
         return (int) dp[0][n - 1];
     }
 
-    public static int longestcommonsubstring_dp(final String s1, final String s2) {
+    public static int longestcommonsubstring_dp( String s1,  String s2) {
         int len = 0;
-        final int n1 = s1.length();
-        final int n2 = s2.length();
-        final int[][] dp = new int[n1][n2];
+         int n1 = s1.length();
+         int n2 = s2.length();
+         int[][] dp = new int[n1][n2];
         for (int i = n1 - 1; i >= 0; i--) {
             for (int j = n2 - 1; j >= 0; j--) {
                 if (i == n1 - 1 || j == n2 - 1) {
@@ -1056,13 +1057,13 @@ public class basic{
         return len;
     }
 
-    public static int longestCommonSubsequence(final String s1, final String s2) {
-        final int len = 0;
-        final int n1 = s1.length();
-        final int n2 = s2.length();
+    public static int longestCommonSubsequence( String s1,  String s2) {
+         int len = 0;
+         int n1 = s1.length();
+         int n2 = s2.length();
         if (n1 == 0 || n2 == 0)
             return 0;
-        final int[][] dp = new int[n1 + 1][n2 + 1];
+         int[][] dp = new int[n1 + 1][n2 + 1];
         for (int i = n1 - 1; i >= 0; i--) {
             for (int j = n2 - 1; j >= 0; j--) {
 
@@ -1076,8 +1077,8 @@ public class basic{
         return dp[0][0];
     }
 
-    public static int longestCommonSubsequence_rec(final String s1, final String s2, final int i, final int j,
-            final int n1, final int n2, final int[][] dp) {
+    public static int longestCommonSubsequence_rec( String s1,  String s2,  int i,  int j,
+             int n1,  int n2,  int[][] dp) {
         if (i >= n1 || j >= n2)
             return 0;
         if (i == n1 - 1 && j == n2 - 1)
@@ -1095,10 +1096,10 @@ public class basic{
     }
 
     // leetcode 583
-    public static int minDelete(final String s1, final String s2) {
-        final int n1 = s1.length();
-        final int n2 = s2.length();
-        final int[][] dp = new int[n1 + 1][n2 + 1];
+    public static int minDelete( String s1,  String s2) {
+         int n1 = s1.length();
+         int n2 = s2.length();
+         int[][] dp = new int[n1 + 1][n2 + 1];
         for (int i = n1 - 1; i >= 0; i--) {
             for (int j = n2 - 1; j >= 0; j--) {
 
@@ -1114,10 +1115,10 @@ public class basic{
 
     // leetcode 718
     // leetcode 1092 , 730, 72, 121, 209
-    public static int editDistance(final String s1, final String s2) {
-        final int n = s1.length();
-        final int m = s2.length();
-        final int[][] dp = new int[n + 1][m + 1];
+    public static int editDistance( String s1,  String s2) {
+         int n = s1.length();
+         int m = s2.length();
+         int[][] dp = new int[n + 1][m + 1];
         for (int i = n; i >= 0; i--) {
             for (int j = m; j >= 0; j--) {
                 if (i == n) {
@@ -1139,7 +1140,7 @@ public class basic{
         return dp[0][0];
     }
 
-    public static int string_occurs_rec(final String s1, final String s2, final int i, final int j, final int[][] dp) {
+    public static int string_occurs_rec( String s1,  String s2,  int i,  int j,  int[][] dp) {
         if (j == s2.length())
             return dp[i][j] = 1;
         if ((s1.length() - i) < (s2.length() - j))
@@ -1151,10 +1152,10 @@ public class basic{
         return dp[i][j] = string_occurs_rec(s1, s2, i + 1, j, dp);
     }
 
-    public static int string_occurs_dp(final String s1, final String s2) {
-        final int n = s1.length();
-        final int m = s2.length();
-        final int[][] dp = new int[n + 1][m + 1];
+    public static int string_occurs_dp( String s1,  String s2) {
+         int n = s1.length();
+         int m = s2.length();
+         int[][] dp = new int[n + 1][m + 1];
         for (int i = n; i >= 0; i--) {
             for (int j = m; j >= 0; j--) {
                 if (j == m) {
@@ -1177,15 +1178,15 @@ public class basic{
     }
 
     public static void strings() {
-        final String s = "dcabaab";
-        final int n = s.length();
-        final int[][] dp = ispalindromesubstring_dp(s);
+         String s = "dcabaab";
+         int n = s.length();
+         int[][] dp = ispalindromesubstring_dp(s);
         display_2D(dp);
 
         System.out.println("longest palindrome substring ");
-        final int[] idx = new int[2];
-        final int start = 0, end = n - 1;
-        final int[][] dp2 = new int[n][n];
+         int[] idx = new int[2];
+         int start = 0, end = n - 1;
+         int[][] dp2 = new int[n][n];
         for (int i = 0; i < n; i++)
             for (int j = 0; j < n; j++)
                 dp2[i][j] = -1;
@@ -1196,7 +1197,7 @@ public class basic{
 
         System.out.println("count of palindrome substring :");
         System.out.println(countofpalindromesubstring_dp(s));
-        final int[][] dp1 = new int[n][n];
+         int[][] dp1 = new int[n][n];
         for (int i = 0; i < n; i++)
             for (int j = 0; j < n; j++)
                 dp1[i][j] = -1;
@@ -1204,24 +1205,24 @@ public class basic{
         display_2D(dp1);
 
         System.out.println(countofpalindromesubsequence_dp(s));
-        final int[][] dp3 = new int[n][n];
+         int[][] dp3 = new int[n][n];
         System.out.println(countofpalindromesubsequence_rec(s, 0, n - 1, dp3));
         System.out.println("longest palindrome subsequence_dp: " + longestpalindromesubsequence_dp(s));
-        final int[][] dp4 = new int[n][n];
-        final int[] idx1 = new int[2];
+         int[][] dp4 = new int[n][n];
+         int[] idx1 = new int[2];
         longestpalindromesubsequence_rec(s, 0, n - 1, dp4, idx1);
         display_2D(dp4);
         System.out.println("longest palindrome subsequence_rec: " + s.substring(idx[0], idx[1] + 1));
-        final int[][] dp5 = new int[n][n];
+         int[][] dp5 = new int[n][n];
         System.out.println(longestPalindromeSubsequence(s, 0, n - 1, dp5));
 
-        final String s1 = "geeksforgeeks";
-        final String s2 = "geeksquiz";
-        final int n1 = s1.length();
-        final int n2 = s2.length();
+         String s1 = "geeksforgeeks";
+         String s2 = "geeksquiz";
+         int n1 = s1.length();
+         int n2 = s2.length();
         System.out.println(longestcommonsubstring_dp(s1, s2));
         System.out.println(longestCommonSubsequence(s1, s2));
-        final int[][] dp6 = new int[n1 + 1][n2 + 1];
+         int[][] dp6 = new int[n1 + 1][n2 + 1];
         System.out.println(longestCommonSubsequence_rec(s1, s2, 0, 0, n1, n2, dp6));
 
         // minimum deletition 583
@@ -1231,7 +1232,7 @@ public class basic{
         System.out.println(editDistance("horse", "ros"));
 
         // no of times a string s2 occurs in s1
-        final int[][] dp7 = new int[6][4];
+         int[][] dp7 = new int[6][4];
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 4; j++)
                 dp7[i][j] = -1;
@@ -1250,7 +1251,7 @@ public class basic{
     // cutting rod
     static int max_cost = 0;
 
-    public static void cutting_rod_void_type(final int[] price, final int n, final int start, final int cost) {
+    public static void cutting_rod_void_type( int[] price,  int n,  int start,  int cost) {
         if (n == 0) {
             max_cost = Math.max(max_cost, cost);
             return;
@@ -1263,7 +1264,7 @@ public class basic{
         return;
     }
 
-    public static int cutting_rod_memo(final int[] price, final int n, final int[] dp, final int start) {
+    public static int cutting_rod_memo( int[] price,  int n,  int[] dp,  int start) {
         if (n == 0)
             return 0;
 
@@ -1279,7 +1280,7 @@ public class basic{
     }
 
     // leetcode 343
-    public static int find(final int n, final int start, final int dp[]) {
+    public static int find( int n,  int start,  int dp[]) {
         if (n == 0 || n == 1)
             return dp[n] = 1;
         if (dp[n] != 0)
@@ -1296,23 +1297,23 @@ public class basic{
         return dp[n] = max_ans;
     }
 
-    public static int integerBreak(final int n) {
+    public static int integerBreak( int n) {
         if (n == 2 || n == 3)
             return n - 1;
-        final int[] dp = new int[n + 1];
+         int[] dp = new int[n + 1];
         return find(n, 1, dp);
     }
 
-    public static int decode_1_rec(final String s, final int idx, final int[] dp) {
+    public static int decode_1_rec( String s,  int idx,  int[] dp) {
         if (idx == s.length())
             return dp[idx] = 1;
-        final char ch = s.charAt(idx);
+         char ch = s.charAt(idx);
         int count = 0;
         if (ch != '0')
             count += decode_1_rec(s, idx + 1, dp);
         if (idx + 1 < s.length()) {
-            final char ch1 = s.charAt(idx + 1);
-            final int n = (ch - '0') * 10 + (ch1 - '0');
+             char ch1 = s.charAt(idx + 1);
+             int n = (ch - '0') * 10 + (ch1 - '0');
             if (n >= 10 && n <= 26)
                 count += decode_1_rec(s, idx + 2, dp);
         }
@@ -1320,18 +1321,18 @@ public class basic{
 
     }
 
-    public static int decode_1_dp(final String s) {
-        final int n = s.length();
-        final int[] dp = new int[n + 1];
+    public static int decode_1_dp( String s) {
+         int n = s.length();
+         int[] dp = new int[n + 1];
         dp[n] = 1;
         for (int i = n - 1; i >= 0; i--) {
             int count = 0;
-            final char ch = s.charAt(i);
+             char ch = s.charAt(i);
             if (ch != '0')
                 count += dp[i + 1];
             if (i + 1 < n) {
-                final char ch1 = s.charAt(i + 1);
-                final int n0 = (ch - '0') * 10 + (ch1 - '0');
+                 char ch1 = s.charAt(i + 1);
+                 int n0 = (ch - '0') * 10 + (ch1 - '0');
                 if (n0 >= 10 && n0 <= 26)
                     count += dp[i + 2];
             }
@@ -1344,17 +1345,17 @@ public class basic{
     // leetcode 639
     static int m = (int) 1e9 + 7;
 
-    public static long decode_2_rec(final String s, final int idx, final long[] dp) {
+    public static long decode_2_rec( String s,  int idx,  long[] dp) {
         if (idx == s.length())
             return dp[idx] = 1;
         if (dp[idx] != 0)
             return dp[idx];
-        final char ch = s.charAt(idx);
+         char ch = s.charAt(idx);
         long count = 0;
         if (ch == '*') {
             count = (count + 9 * decode_2_rec(s, idx + 1, dp)) % m;
             if (idx + 1 < s.length()) {
-                final char ch1 = s.charAt(idx + 1);
+                 char ch1 = s.charAt(idx + 1);
                 if (ch1 == '*')
                     count = (count + 15 * decode_2_rec(s, idx + 2, dp)) % m;
                 if (ch1 >= '0' && ch1 <= '6')
@@ -1365,14 +1366,14 @@ public class basic{
         } else if (ch != '0') {
             count = (count + decode_2_rec(s, idx + 1, dp)) % m;
             if (idx + 1 < s.length()) {
-                final char ch2 = s.charAt(idx + 1);
+                 char ch2 = s.charAt(idx + 1);
                 if (ch2 == '*') {
                     if (ch == '1')
                         count = (count + 9 * decode_2_rec(s, idx + 2, dp)) % m;
                     else if (ch == '2')
                         count = (count + 6 * decode_2_rec(s, idx + 2, dp)) % m;
                 } else {
-                    final int no = (ch - '0') * 10 + (ch2 - '0');
+                     int no = (ch - '0') * 10 + (ch2 - '0');
                     if (no > 9 && no < 27)
                         count = (count + decode_2_rec(s, idx + 2, dp)) % m;
                 }
@@ -1381,18 +1382,18 @@ public class basic{
         return dp[idx] = count % m;
     }
 
-    public static int decode_2_dp(final String s) {
-        final int n = s.length();
-        final int m1 = n + 1;
-        final long[] dp = new long[m1];
+    public static int decode_2_dp( String s) {
+         int n = s.length();
+         int m1 = n + 1;
+         long[] dp = new long[m1];
         dp[m1 - 1] = 1;
         for (int i = m1 - 2; i >= 0; i--) {
-            final char ch = s.charAt(i);
+             char ch = s.charAt(i);
             long count = 0;
             if (ch == '*') {
                 count = (count + 9 * dp[i + 1]) % m;
                 if (i + 1 < n) {
-                    final char ch2 = s.charAt(i + 1);
+                     char ch2 = s.charAt(i + 1);
                     if (ch2 == '*')
                         count = (count + 15 * dp[i + 2]) % m;
                     if (ch2 >= '0' && ch2 <= '6')
@@ -1403,14 +1404,14 @@ public class basic{
             } else if (ch != '0') {
                 count = (count + dp[i + 1]) % m;
                 if (i + 1 < n) {
-                    final char ch2 = s.charAt(i + 1);
+                     char ch2 = s.charAt(i + 1);
                     if (ch2 == '*') {
                         if (ch == '1')
                             count = (count + 9 * dp[i + 2]) % m;
                         if (ch == '2')
                             count = (count + 6 * dp[i + 2]) % m;
                     } else {
-                        final int value = (ch - '0') * 10 + (ch2 - '0');
+                         int value = (ch - '0') * 10 + (ch2 - '0');
                         if (value < 27)
                             count = (count + dp[i + 2]) % m;
                     }
@@ -1424,21 +1425,21 @@ public class basic{
 
     static int mod1 = (int) 1e9 + 7;
 
-    public static int distinctSubseqII(final String s) {
-        final int n = s.length();
+    public static int distinctSubseqII( String s) {
+         int n = s.length();
         if (n == 0 || n == 1)
             return n;
-        final long[] dp = new long[n + 1];
+         long[] dp = new long[n + 1];
         dp[0] = 1;
-        final int[] vis = new int[27];
+         int[] vis = new int[27];
         for (int i = 1; i <= n; i++) {
-            final int ch = s.charAt(i - 1) - 'a';
+             int ch = s.charAt(i - 1) - 'a';
             if (vis[ch] == 0) {
                 dp[i] = (2 * dp[i - 1]) % mod1;
                 vis[ch] = i;
             } else if (vis[ch] != 0) {
                 dp[i] = (2 * dp[i - 1]) % mod1;
-                final int idx = vis[ch];
+                 int idx = vis[ch];
                 dp[i] = (dp[i] - dp[idx - 1]) % mod1;
                 vis[ch] = i;
             }
@@ -1449,18 +1450,18 @@ public class basic{
         return (int) ans;
     }
 
-    public static int palindrome_set(final String s,final Set<String> set,final int i,final int j)
-    {
+    // public static int palindrome_set( String s, Set<String> set, int i, int j)
+    // {
 
-        while(i>=0 && j<s.length())
-    }
+    //     while(i>=0 && j<s.length());
+    // }
 
     public static void practice()
     {  
         // rod cutting geeks
-        final int []price={3,5,8,9,10,20,17,20};
-        final int n=price.length;
-        final int [] dp=new int[n];
+         int []price={3,5,8,9,10,20,17,20};
+         int n=price.length;
+         int [] dp=new int[n];
         cutting_rod_void_type(price,n,0,0);
         System.out.println(max_cost);
         System.out.println(cutting_rod_memo(price,n,dp,0));
@@ -1469,31 +1470,31 @@ public class basic{
         System.out.println(integerBreak(58));
 
         //leetcode 91
-        final String s="11203678";
-        final int[]dp1=new int[s.length()+1];
+         String s="11203678";
+         int[]dp1=new int[s.length()+1];
         System.out.println(decode_1_rec(s,0,dp1));
         System.out.println(decode_1_dp(s));
 
         //leetcode 639
-        final long[] dp2=new long[s.length()+1];
+         long[] dp2=new long[s.length()+1];
         System.out.println(decode_2_rec(s,0,dp2));
         System.out.println(decode_2_dp(s));
 
 
         //leetcode 940
-        System.out.println(distinctSubseqII(s));
+        System.out.println(distinctSubseqII("abcdfesabcd"));
 
 
         //generate palindrome using set
-        final Set<String> hash=new Set<String>();\
-        final String s2="bccb";
-        System.out.println(palindrome_set(s2,hash,0,s2.length()-1));
+        //  Set<String> hash=new Set<String>();
+        //  String s2="bccb";
+        // System.out.println(palindrome_set(s2,hash,0,s2.length()-1));
 
 
     }
 
     // ======================================================================================================================================
-    public static int coin_change_perm_rec(final int[] coins, final int target) {
+    public static int coin_change_perm_rec( int[] coins,  int target) {
         if (target == 0)
             return 1;
 
@@ -1507,7 +1508,7 @@ public class basic{
         return ans;
     }
 
-    public static int coin_change_comb_rec(final int[] coins, final int target, final int start) {
+    public static int coin_change_comb_rec( int[] coins,  int target,  int start) {
         if (target == 0)
             return 1;
         if (start == coins.length)
@@ -1527,13 +1528,13 @@ public class basic{
         return ans;
     }
 
-    public static int coin_change_dp_perm(final int[] coins, final int target) {
+    public static int coin_change_dp_perm( int[] coins,  int target) {
 
-        final int n = coins.length;
-        final int[] dp = new int[target + 1];
+         int n = coins.length;
+         int[] dp = new int[target + 1];
         dp[0] = 1;
         for (int i = 1; i <= target; i++) {
-            for (final int coin : coins) {
+            for ( int coin : coins) {
                 if (coin == 0)
                     continue;
                 if (i - coin >= 0) {
@@ -1547,13 +1548,13 @@ public class basic{
     }
 
     // using this approach we can find solutions of n variable equation
-    public static int coin_change_dp_comb(final int[] coins, final int target) {
+    public static int coin_change_dp_comb( int[] coins,  int target) {
 
-        final int n = coins.length;
-        final int[] dp = new int[target + 1];
+         int n = coins.length;
+         int[] dp = new int[target + 1];
         dp[0] = 1;
 
-        for (final int coin : coins) {
+        for ( int coin : coins) {
             if (coin == 0)
                 continue;
             for (int t = 1; t <= target; t++) {
@@ -1566,7 +1567,7 @@ public class basic{
 
     }
 
-    public static int target_sum_rec(final int[] coins, final int idx, final int target, final int[][] dp) {
+    public static int target_sum_rec( int[] coins,  int idx,  int target,  int[][] dp) {
         if (target == 0)
             return dp[idx][target] = 1;
         if (idx == coins.length)
@@ -1581,8 +1582,8 @@ public class basic{
     }
 
     // the dp array formed is just same as memo
-    public static int target_sum_dp(final int[] coins, final int target) {
-        final int[][] dp = new int[coins.length + 1][target + 1];
+    public static int target_sum_dp( int[] coins,  int target) {
+         int[][] dp = new int[coins.length + 1][target + 1];
         dp[coins.length][0] = 1;
         for (int j = 0; j < dp[0].length; j++) {
             for (int i = dp.length - 2; i >= 0; i--) {
@@ -1609,10 +1610,10 @@ public class basic{
         return dp[0][dp[0].length - 1];
     }
 
-    public static int target_sum_dp_02(final int[] coins, final int target) {
-        final int n = coins.length;
-        final int m = target;
-        final int[][] dp = new int[n + 1][m + 1];
+    public static int target_sum_dp_02( int[] coins,  int target) {
+         int n = coins.length;
+         int m = target;
+         int[][] dp = new int[n + 1][m + 1];
         dp[0][0] = 1;
         for (int i = 1; i <= n; i++) {
             for (int j = 0; j <= m; j++) {
@@ -1633,8 +1634,8 @@ public class basic{
     }
 
     public static void coin_change() {
-        final int coins[] = { 2, 3, 5, 0 };
-        final int target = 10;
+         int coins[] = { 2, 3, 5, 0 };
+         int target = 10;
         System.out.println(coin_change_perm_rec(coins, 10)); // infinite times
         System.out.println(coin_change_comb_rec(coins, 10, 0));
 
@@ -1643,7 +1644,7 @@ public class basic{
 
         // standard question find target using every coin only once irrespective of any
         // sequence
-        final int[][] dp = new int[coins.length + 1][target + 1];
+         int[][] dp = new int[coins.length + 1][target + 1];
         for (int i = 0; i < dp.length; i++) {
             for (int j = 0; j < dp[0].length; j++)
                 dp[i][j] = -1;
@@ -1656,8 +1657,8 @@ public class basic{
     }
 
     // =====================================================================================================================================
-    public static int LIS_DP(final int[] arr, final int[] dp) {
-        final int n = arr.length;
+    public static int LIS_DP( int[] arr,  int[] dp) {
+         int n = arr.length;
         dp[0] = 1;
         int ans = 1;
         for (int i = 1; i < n; i++) {
@@ -1672,8 +1673,8 @@ public class basic{
         return ans;
     }
 
-    public static int LDS_DP_reverse(final int[] arr, final int[] dp) {
-        final int n = arr.length;
+    public static int LDS_DP_reverse( int[] arr,  int[] dp) {
+         int n = arr.length;
         dp[n - 1] = 1;
         int ans = 1;
         for (int i = n - 2; i >= 0; i--) {
@@ -1690,9 +1691,9 @@ public class basic{
 
     }
 
-    public static int LDS_DP_forward(final int[] arr) {
-        final int n = arr.length;
-        final int[] dp = new int[n];
+    public static int LDS_DP_forward( int[] arr) {
+         int n = arr.length;
+         int[] dp = new int[n];
         dp[0] = 1;
         int ans = 1;
         for (int i = 1; i < n; i++) {
@@ -1708,9 +1709,9 @@ public class basic{
         return ans;
     }
 
-    public static int LBS(final int[] arr1) {
-        final int[] Lis = new int[arr1.length];
-        final int[] Lds = new int[arr1.length];
+    public static int LBS( int[] arr1) {
+         int[] Lis = new int[arr1.length];
+         int[] Lds = new int[arr1.length];
         LIS_DP(arr1, Lis);
         LDS_DP_reverse(arr1, Lds);
         int ans = 0;
@@ -1720,10 +1721,10 @@ public class basic{
         return ans;
     }
 
-    public static int max_sum_increasing_subseq(final int[] arr) {
+    public static int max_sum_increasing_subseq( int[] arr) {
 
-        final int n = arr.length;
-        final int[] dp = new int[n];
+         int n = arr.length;
+         int[] dp = new int[n];
         dp[0] = arr[0];
         int ans = 0;
         for (int i = 1; i < n; i++) {
@@ -1737,10 +1738,10 @@ public class basic{
         return ans;
     }
 
-    public static int min_deletion_to_sort(final int[] arr) {
+    public static int min_deletion_to_sort( int[] arr) {
 
-        final int n = arr.length;
-        final int[] dp = new int[n];
+         int n = arr.length;
+         int[] dp = new int[n];
         dp[0] = 1;
         int ans = 0;
         for (int i = 1; i < n; i++) {
@@ -1754,10 +1755,10 @@ public class basic{
         return n - ans;
     }
 
-    public static int count_LIS(final int[] arr) {
-        final int n = arr.length;
-        final int[] dp = new int[n];
-        final int[] count = new int[n];
+    public static int count_LIS( int[] arr) {
+         int n = arr.length;
+         int[] dp = new int[n];
+         int[] count = new int[n];
         dp[0] = count[0] = 1;
         int ans = 0;
         int maxlen = 0;
@@ -1787,8 +1788,8 @@ public class basic{
     }
 
     public static void bitonic() {
-        final int[] arr = { 10, 22, 9, 33, 21, 50, 41, 60, 90 };
-        final int[] arr1 = { 0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 15 };
+         int[] arr = { 10, 22, 9, 33, 21, 50, 41, 60, 90 };
+         int[] arr1 = { 0, 8, 4, 12, 2, 10, 6, 14, 1, 9, 5, 15 };
         System.out.println(LIS_DP(arr1, new int[arr1.length]));
 
         System.out.println(LDS_DP_reverse(arr1, new int[arr1.length]));
@@ -1807,7 +1808,7 @@ public class basic{
     }
     // =====================================================================================================================================
 
-    public static int mcm_rec(final int[] arr, final int[][] dp, final int start, final int end) {
+    public static int mcm_rec( int[] arr,  int[][] dp,  int start,  int end) {
         if (start >= end)
             return 0;
         if (start == end - 1)
@@ -1818,17 +1819,17 @@ public class basic{
             return dp[start][end];
         int max_ans = (int) 1e9;
         for (int cut = start + 1; cut < end; cut++) {
-            final int ans = mcm_rec(arr, dp, start, cut) + arr[start] * arr[cut] * arr[end]
+             int ans = mcm_rec(arr, dp, start, cut) + arr[start] * arr[cut] * arr[end]
                     + mcm_rec(arr, dp, cut, end);
             max_ans = Math.min(ans, max_ans);
         }
         return dp[start][end] = max_ans;
     }
 
-    public static int mcm_dp(final int[] arr) {
+    public static int mcm_dp( int[] arr) {
 
-        final int n = arr.length;
-        final int[][] dp = new int[n][n];
+         int n = arr.length;
+         int[][] dp = new int[n][n];
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i; j < n; j++) {
                 if (i == j)
@@ -1839,7 +1840,7 @@ public class basic{
                 }
                 int min_ans = (int) 1e9;
                 for (int cut = i + 1; cut < j; cut++) {
-                    final int ans = dp[i][cut] + arr[i] * arr[cut] * arr[j] + dp[cut][j];
+                     int ans = dp[i][cut] + arr[i] * arr[cut] * arr[j] + dp[cut][j];
                     min_ans = Math.min(ans, min_ans);
                 }
                 dp[i][j] = min_ans;
@@ -1850,10 +1851,10 @@ public class basic{
     }
 
     // https://practice.geeksforgeeks.org/problems/brackets-in-matrix-chain-multiplication/0/
-    public static String mcm_string_dp(final int[] arr) {
-        final int n = arr.length;
-        final int[][] dp = new int[n][n];
-        final String[][] sdp = new String[n][n];
+    public static String mcm_string_dp( int[] arr) {
+         int n = arr.length;
+         int[][] dp = new int[n][n];
+         String[][] sdp = new String[n][n];
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++)
                 sdp[i][j] = "";
@@ -1868,7 +1869,7 @@ public class basic{
                 int min_ans = (int) 1e9;
                 String ans1 = "";
                 for (int cut = i + 1; cut < j; cut++) {
-                    final int ans = dp[i][cut] + arr[i] * arr[cut] * arr[j] + dp[cut][j];
+                     int ans = dp[i][cut] + arr[i] * arr[cut] * arr[j] + dp[cut][j];
                     if (ans < min_ans) {
                         min_ans = ans;
                         ans1 = '(' + sdp[i][cut] + sdp[cut][j] + ')';
@@ -1883,9 +1884,9 @@ public class basic{
     }
 
     // leetcode 132
-    public static boolean[][] find_palindrome(final String s) {
-        final int n = s.length();
-        final boolean[][] dp = new boolean[n][n];
+    public static boolean[][] find_palindrome( String s) {
+         int n = s.length();
+         boolean[][] dp = new boolean[n][n];
         for (int i = n - 1; i >= 0; i--) {
             for (int j = i; j < n; j++) {
                 if (i == j)
@@ -1899,8 +1900,8 @@ public class basic{
         return dp;
     }
 
-    public static int palindrome_partitioning_rec(final String s, final boolean[][] dp, final int start, final int end,
-            final int[] dp1) {
+    public static int palindrome_partitioning_rec( String s,  boolean[][] dp,  int start,  int end,
+             int[] dp1) {
         if (start >= end)
             return 0;
         if (dp[start][end])
@@ -1911,22 +1912,22 @@ public class basic{
         int min_ans = (int) 1e9;
         for (int cut = start; cut <= end; cut++) {
             if (dp[start][cut]) {
-                final int ans = palindrome_partitioning_rec(s, dp, cut + 1, end, dp1) + 1;
+                 int ans = palindrome_partitioning_rec(s, dp, cut + 1, end, dp1) + 1;
                 min_ans = Math.min(min_ans, ans);
             }
         }
         return dp1[start] = min_ans;
     }
 
-    public static int palindrome_partitioning_dp(final String s, final boolean[][] dp) {
-        final int end = s.length() - 1;
-        final int[] dp1 = new int[end + 1];
+    public static int palindrome_partitioning_dp( String s,  boolean[][] dp) {
+         int end = s.length() - 1;
+         int[] dp1 = new int[end + 1];
         dp1[end] = 0;
         for (int start = end - 1; start >= 0; start--) {
             int min_ans = (int) 1e9;
             for (int cut = start; cut < end; cut++) {
                 if (dp[start][cut]) {
-                    final int ans = (dp[cut + 1][end] == true) ? 0 : dp1[cut + 1];
+                     int ans = (dp[cut + 1][end] == true) ? 0 : dp1[cut + 1];
                     System.out.print(ans + " ");
                     min_ans = Math.min(min_ans, ans + 1);
                 }
@@ -1938,14 +1939,14 @@ public class basic{
         return dp1[0];
     }
 
-    public static int total_sum(final int start, final int end, final int[] fre) {
+    public static int total_sum( int start,  int end,  int[] fre) {
         int sum = 0;
         for (int i = start; i <= end; i++)
             sum += fre[i];
         return sum;
     }
 
-    public static int wildcard_matching(final String s1, final String s2, final int i, final int j, final int[][] dp) {
+    public static int wildcard_matching( String s1,  String s2,  int i,  int j,  int[][] dp) {
         if (i == s1.length() && j == s2.length())
             return dp[i][j] = 1;
         if (i == s1.length() || j == s2.length()) {
@@ -1968,8 +1969,8 @@ public class basic{
         return dp[i][j] = ans ? 1 : 0;
     }
 
-    public static String remove_star(final String s) {
-        final StringBuilder s1 = new StringBuilder();
+    public static String remove_star( String s) {
+         StringBuilder s1 = new StringBuilder();
         boolean ch = false;
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) != '*') {
@@ -1984,7 +1985,7 @@ public class basic{
         return s1.toString();
     }
 
-    public static int optimal_bst(final int[] fre, final int start, final int end, final int[][] dp) {
+    public static int optimal_bst( int[] fre,  int start,  int end,  int[][] dp) {
         if (start > end)
             return 0;
         if (start == end)
@@ -1993,16 +1994,16 @@ public class basic{
             return dp[start][end];
         int min_ans = (int) 1e8;
         for (int cut = start; cut <= end; cut++) {
-            final int left = optimal_bst(fre, start, cut - 1, dp);
-            final int right = optimal_bst(fre, cut + 1, end, dp);
+             int left = optimal_bst(fre, start, cut - 1, dp);
+             int right = optimal_bst(fre, cut + 1, end, dp);
             min_ans = Math.min(min_ans, left + right);
         }
         return dp[start][end] = (min_ans == (int) 1e8) ? 0 : min_ans + total_sum(start, end, fre);
     }
 
-    public static int optimal_bst_dp(final int[] fre) {
-        final int n = fre.length;
-        final int[][] dp = new int[n][n];
+    public static int optimal_bst_dp( int[] fre) {
+         int n = fre.length;
+         int[][] dp = new int[n][n];
         for (int start = n - 1; start >= 0; start--) {
             for (int end = start; end < n; end++) {
                 if (start == end) {
@@ -2012,8 +2013,8 @@ public class basic{
 
                 int ans = (int) 1e8;
                 for (int cut = start; cut <= end; cut++) {
-                    final int left = (cut == start) ? 0 : dp[start][cut - 1];
-                    final int right = (cut == end) ? 0 : dp[cut + 1][end];
+                     int left = (cut == start) ? 0 : dp[start][cut - 1];
+                     int right = (cut == end) ? 0 : dp[cut + 1][end];
                     ans = Math.min(ans, left + right);
                 }
                 dp[start][end] = (ans == (int) 1e8) ? 0 : ans + total_sum(start, end, fre);
@@ -2023,10 +2024,10 @@ public class basic{
         return dp[0][n - 1];
     }
 
-    public static int unique_BST(final int n) {
+    public static int unique_BST( int n) {
         if (n == 0 || n == 1)
             return n;
-        final int[][] dp = new int[n + 1][n + 1];
+         int[][] dp = new int[n + 1][n + 1];
         for (int start = n; start > 0; start--) {
             for (int end = start; end <= n; end++) {
                 if (start == end) {
@@ -2035,8 +2036,8 @@ public class basic{
                 }
                 int ans = 0;
                 for (int root = start; root <= end; root++) {
-                    final int left = (root == start) ? 1 : dp[start][root - 1];
-                    final int right = (root == end) ? 1 : dp[root + 1][end];
+                     int left = (root == start) ? 1 : dp[start][root - 1];
+                     int right = (root == end) ? 1 : dp[root + 1][end];
                     ans += left * right;
                 }
                 dp[start][end] = ans;
@@ -2051,11 +2052,11 @@ public class basic{
     }
 
     public static void mcm() {
-        final int[] arr = { 40, 20, 30, 10, 30 };
-        final int n = arr.length;
-        final int[][] dp = new int[arr.length][arr.length];
-        final int start = 0;
-        final int end = arr.length - 1;
+         int[] arr = { 40, 20, 30, 10, 30 };
+         int n = arr.length;
+         int[][] dp = new int[arr.length][arr.length];
+         int start = 0;
+         int end = arr.length - 1;
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++)
                 dp[i][j] = -1;
@@ -2069,18 +2070,18 @@ public class basic{
         System.out.println(mcm_string_dp(arr));
 
         // leetcode 132
-        final String s = "abccbddcddff";
-        final boolean[][] is_palindrome = find_palindrome(s);
-        final int[] dp1 = new int[s.length()];
+         String s = "abccbddcddff";
+         boolean[][] is_palindrome = find_palindrome(s);
+         int[] dp1 = new int[s.length()];
         for (int i = 0; i < s.length(); i++)
             dp1[i] = -1;
         System.out.println(palindrome_partitioning_rec(s, is_palindrome, 0, s.length() - 1, dp1));
         System.out.println(palindrome_partitioning_dp(s, is_palindrome));
 
         // optimal bst
-        final int[] key = { 10, 12, 20 };
-        final int[] fre = { 34, 8, 50 };
-        final int[][] dp2 = new int[key.length][key.length];
+         int[] key = { 10, 12, 20 };
+         int[] fre = { 34, 8, 50 };
+         int[][] dp2 = new int[key.length][key.length];
         System.out.println(optimal_bst(fre, 0, key.length - 1, dp2));
         display_2D(dp2);
         System.out.println(optimal_bst_dp(fre));
@@ -2089,10 +2090,10 @@ public class basic{
         System.out.println(unique_BST(10));
 
         // wildcard matching
-        final String s1 = "acdcb";
+         String s1 = "acdcb";
         String p = "a***c***b";
         p = remove_star(p);
-        final int[][] dp3 = new int[s1.length() + 1][p.length() + 1];
+         int[][] dp3 = new int[s1.length() + 1][p.length() + 1];
        for(int i=0;i<=s1.length();i++)
        {
         for(int j=0;j<=p.length();j++)
