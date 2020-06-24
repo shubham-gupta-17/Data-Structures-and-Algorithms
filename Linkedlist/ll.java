@@ -1,30 +1,42 @@
 public class ll{
  
-   public  static class  Node{
+ public static class linkedlist{
+   public   class  Node{
    	int  data;
    	Node next=null;
 
-   	public Node(int data)
+      public Node(int data)
    	{
    		this.data=data;
-   	}
-
-   	public String tostring()
-   	{
-   		return (this.data + " ->");
    	}
    }
 
 
-   public static void solve(){
-   	Node node=new Node(10);
-   	System.out.print(node);
+       Node head=null;
+       Node tail=null;
+       int size=0;
+       public int size()
+       {
+         return this.size;
+       }
+
+       public boolean IsEmpty()
+       {
+         return size==0;
+       }
+
+       @Override
+       public String toString()
+       {
+           return ("HI");
+       }
+   
    }
 
    public static void main(String[] args)
    {
-   	solve();
+      linkedlist ll=new linkedlist();
+      System.out.println(ll);       // this will print the address of the object after overriding it will print what i want to print on console
    }
-
 
 }

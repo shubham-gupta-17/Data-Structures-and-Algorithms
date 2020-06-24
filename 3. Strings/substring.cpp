@@ -25,7 +25,8 @@ void substring()
 	        cout<<s1<<endl;
 	    }
 	}
-
+}
+void substring1(){
 string s="1234";
 int n=s.length();
     for(int i=0;i<n;i++)
@@ -36,7 +37,7 @@ int n=s.length();
         }
     }
 }
-void substring1()
+void substring2s()
 {
     string s="123456";
     int n=s.length();
@@ -48,9 +49,19 @@ void substring1()
         }
     }
 }
+void subsequence(string s,string ans,int i)
+{
+	if(i==s.length()){
+		cout<<ans<<endl;
+		return ;
+	}	
+	subsequence(s,ans+s[i],i+1);
+	subsequence(s,ans,i+1);
+	return ;
+}
 int main() {
 	//cout<<"GfG!";
-	subsequence();
+	subsequence("1234","",0);
 	
 	return 0;
 }
