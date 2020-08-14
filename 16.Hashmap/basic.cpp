@@ -1,5 +1,6 @@
 #include<iostream>
 #include<unordered_map>
+#include<vector>
 using namespace std;
 void map1_basic()
 {
@@ -42,10 +43,26 @@ void frequency_map(string&s)
 
 	return;
 }
+void character_index(string s)
+{
+	unordered_map<char,vector<int>> map;
+	for(int i=0;i<s.length();i++)
+	{
+		char ch=s[i];
+		map[ch].push_back(i);
+	}
+	for(pair<char,vector<int>> p: map){
+		cout<<p.first<<"->";
+		  for(int i=0;i<p.second.size();i++) 
+		  	cout<<p.second[i]<<", ";
+		cout<<endl;
+	}
+}
 int main()
 {
-	map1_basic();
+	//map1_basic();
 	string s="abbcdabbbbabbbacde";
-	frequency_map(s);
+	//frequency_map(s);
+	character_index(s);
 	return 0;
 }

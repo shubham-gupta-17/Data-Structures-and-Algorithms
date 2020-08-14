@@ -8,6 +8,13 @@ public class basic{
 		hashmap();
 		String s="abbcdabbbbabbbacde";
 		frequency_map(s);
+		character_index(s);
+	}
+
+	public static void character_index(String s)
+	{
+		Hashmap<Character,ArrayList<Integer>> map=new Hashmap<>();
+		
 	}
 
 	public static void hashmap()
