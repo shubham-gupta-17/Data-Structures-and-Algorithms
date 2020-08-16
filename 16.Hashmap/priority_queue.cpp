@@ -1,29 +1,19 @@
 #include<iostream>
-#include<vector>
-class priority_queue{
+#include"priority_queue.h"
+using namespace std;
+int main()
+{
+	vector<int> arr={5,4,3,2,1};
+	bool max=false;    //create min pq
+	priority_queue pq(max,arr);
+	pq.add(9,max);
+	pq.add(8,max);
+	pq.add(7,max);
+	pq.add(6,max);
+	pq.add(10,max);
+	//pq.remove(1,max);
+	
+	pq.display();
+	return 0;
 
-	public :
-	vector<int> pq;
-
-	int size()
-	{
-		return pq.size();
-	}
-
-	int top()
-	{
-		return pq[0];
-	}
-
-	void downheapify(int p_idx)
-	{
-		int left_idx=2*p_idx+1;
-		int right_idx=2*p_idx+2;
-
-		int max_idx=p_idx // let that parent is max value in array and store its value
-
-		if(left_idx< pq.size() && pq[left_idx]>pq[max_idx]) max_idx=left_idx;
-
-		if(right_idx < pq.size() && pq[right_idx] > pq[max_idx])  max_idx=right_idx;
-	}
-};
+}
