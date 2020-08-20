@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 vector<int> arr;
-    bool compare(int a,int b,bool max)
+bool compare(int a,int b,bool max)
 {
 	if(max==true)
 	  return a<b;
