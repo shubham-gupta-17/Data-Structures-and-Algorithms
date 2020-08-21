@@ -16,6 +16,8 @@ void find(){
   // map.erase(3);
    for(auto it=map.begin();it!=map.end();it++) cout<<(*it)<<" ";
    cout<<endl;
+   for(auto it:map) cout<<it<<" ";
+   cout<<endl;
    auto it=next(map.begin(),n/2);
 
    int m=*prev(map.end(),(n/2)+1);
