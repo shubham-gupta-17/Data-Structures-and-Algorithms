@@ -55,9 +55,4 @@ public class TrieBasic{
     root=new Node();
   }
 
-
-
-
-
-
 }
