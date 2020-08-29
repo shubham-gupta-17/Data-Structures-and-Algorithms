@@ -60,7 +60,6 @@ class Graph_genric{
    void addedge(T vertex,T neighbour,bool dir)
    {
        adjlist[vertex].push_back(neighbour);
-       if(dir)
        adjlist[neighbour].push_back(vertex);
    }
 
@@ -80,7 +79,7 @@ class Graph_genric{
    {
        queue<T> q;
        map<T,bool> visited;
-       q.push(src); 
+       q.push(src);
        visited[src]=true;
        while(!q.empty())
        {
@@ -95,24 +94,24 @@ class Graph_genric{
                 visited[it]=true;
                }
            }
-        
+
        }
 
    }
 };
 int main()
 {
-   Graph g(9);
-    g.addEdge(0,1,true);
-    g.addEdge(0,3,true);
-    g.addEdge(1,2,true);
-    g.addEdge(2,3,true);
-    g.addEdge(3,4,true);
-    g.addEdge(4,5,true);
-    g.addEdge(4,6,true);
-    g.addEdge(5,6,true);
-    //addEdge(5,7,70);
-    g.addEdge(7,8,true);
+   // Graph g(9);
+   //  g.addEdge(0,1,true);
+   //  g.addEdge(0,3,true);
+   //  g.addEdge(1,2,true);
+   //  g.addEdge(2,3,true);
+   //  g.addEdge(3,4,true);
+   //  g.addEdge(4,5,true);
+   //  g.addEdge(4,6,true);
+   //  g.addEdge(5,6,true);
+   //  //addEdge(5,7,70);
+   //  g.addEdge(7,8,true);
 
    Graph_genric<string> g1;
    g1.addedge("putin","trump",false);
@@ -122,15 +121,15 @@ int main()
    g1.addedge("modi","yogi",true);
    g1.addedge("yogi","prabhu",false);
    g1.addedge("prabhu","modi",false);
-   g.print();
-   cout<<endl;
-   for(int i=0;i<g.size();i++)
-   {
-       g.bfs(i);
-   }
-   cout<<endl;
    g1.print();
-   cout<<endl;
-   g1.bfs("putin");
+   // cout<<endl;
+   // for(int i=0;i<g.size();i++)
+   // {
+   //     g.bfs(i);
+   // }
+   // cout<<endl;
+   // g1.print();
+   // cout<<endl;
+   // g1.bfs("putin");
    return 0;
 }
