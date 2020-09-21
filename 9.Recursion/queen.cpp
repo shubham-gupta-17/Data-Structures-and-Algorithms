@@ -16,7 +16,7 @@ void queen_2D_combination(vector<vector<int>>&box,int total_queens,int current_q
         queen_2D_combination(box,total_queens,current_queen+1,i+1,ans+"box"+to_string(i)+" queen"+to_string(current_queen)+" ");
          box[r][c]=0;
         }
-    
+
     }
     return;
 }
@@ -43,14 +43,14 @@ void queen_2D_permutation(vector<vector<int>>&box,int total_queens,int current_q
     }
 
     for(int i=current_box;i<box.size()*box[0].size();i++)
-    {   int r=i/box.size();
+    {   int r=i/box[0].size();
         int c=i%box[0].size();
         if(r>=0 && r<box.size() && c>=0 && c<box[0].size() && !box[r][c]){
          box[r][c]=1;
         queen_2D_combination(box,total_queens,current_queen+1,0,ans+"box"+to_string(i)+" queen"+to_string(current_queen)+" ");
          box[r][c]=0;
         }
-    
+
     }
     return;
 }
@@ -64,11 +64,11 @@ void queen_permutation(vector<int> &boxes,int start_box,int current_queen,int to
 
     for(int i=start_box;i<boxes.size();i++)
     {   if(!boxes[i]){
-        boxes[i]=1; 
+        boxes[i]=1;
         queen_combinations(boxes,0,current_queen+1,total_queens,ans +"box"+to_string(i)+"queen"+to_string(current_queen));
         boxes[i]=0;
     }
-    
+
     }
     return;
 
@@ -77,7 +77,7 @@ void queen_permutation(vector<int> &boxes,int start_box,int current_queen,int to
 // vector<vector<int>> dir={{-1,0},{0,-1},{-1,1},{-1,-1},{1,0},{0,1},{1,-1},{1,1}};
 vector<vector<int>> dir={{0,-1},{-1,0},{-1,-1},{-1,1}};
 bool is_safe(vector<vector<int>>&boxes,int r,int c)
-{  
+{
     for (int d = 0; d < dir.size(); d++)
     {
         for (int jump = 1; jump <= boxes.size(); jump++)
@@ -87,7 +87,7 @@ bool is_safe(vector<vector<int>>&boxes,int r,int c)
 
            if (nr >= 0 && nc >= 0 && nr < boxes.size() && nc < boxes[0].size() && boxes[nr][nc])
              return false;
-            
+
           /* if( nr<0 || nc <0 || nr>=boxes.size() || nc>=boxes[0].size() )
            {
                if(boxes[nr][nc])
@@ -111,10 +111,10 @@ void nqueen(vector<vector<int>> &box,int start_box,int current_queen,int total_q
 
               if(is_safe(box,nr,nc) && !box[nr][nc]){
                   box[nr][nc]=1;
-            
+
           nqueen(box,i+1,current_queen+1,total_queens,ans+"  queen"+to_string(current_queen)+" box"+to_string(nr)+","+to_string(nc));
               box[nr][nc]=0;
-      
+
       }
       }
       return;
